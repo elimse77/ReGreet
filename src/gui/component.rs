@@ -19,6 +19,7 @@ use crate::config::BgFit;
 use super::messages::{CommandMsg, InputMsg, UserSessInfo};
 use super::model::{Greeter, InputMode, Updates};
 use super::templates::Ui;
+use super::widget::keyboard;
 
 /// Load GTK settings from the greeter config.
 fn setup_settings(model: &Greeter, root: &gtk::ApplicationWindow) {
@@ -424,6 +425,23 @@ impl AsyncComponent for Greeter {
 
         // Set the default behaviour of pressing the Return key to act like the login button.
         root.set_default_widget(Some(&widgets.ui.login_button));
+
+        // Set up the on-screen keyboard, which is shown by the keyboard toggle button.
+        let keyboard = keyboard::build(
+            &root,
+            &widgets.ui.login_button,
+            vec![
+                widgets.ui.secret_entry.clone().upcast::<gtk::Widget>(),
+                widgets.ui.visible_entry.clone().upcast::<gtk::Widget>(),
+                widgets.ui.username_entry.clone().upcast::<gtk::Widget>(),
+                widgets.ui.session_entry.clone().upcast::<gtk::Widget>(),
+            ],
+        );
+        widgets.ui.add_overlay(&keyboard);
+        widgets
+            .ui
+            .kbd_toggle
+            .connect_toggled(move |button| keyboard.set_reveal_child(button.is_active()));
 
         if let Some(user) = model.cache.get_last_user() {
             if model.config.skip_selection() && model.cache.has_last_session(user) {

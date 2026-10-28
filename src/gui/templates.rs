@@ -230,6 +230,15 @@ impl WidgetTemplate for Ui {
                 /// Widget containing the sessions
                 #[name = "sessions_box"]
                 gtk::ComboBoxText,
+
+                /// Button to toggle the on-screen keyboard
+                #[name = "kbd_toggle"]
+                gtk::ToggleButton {
+                    set_icon_name: "input-keyboard-symbolic",
+                    set_tooltip_text: Some("On-screen keyboard"),
+                    // Don't steal the focus from the text field that is being typed into.
+                    set_focus_on_click: false,
+                },
             },
         }
     }

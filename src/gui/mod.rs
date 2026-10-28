@@ -10,6 +10,7 @@ mod model;
 mod templates;
 pub(crate) mod widget {
     pub mod clock;
+    pub mod keyboard;
 }
 
 pub use component::GreeterInit;
