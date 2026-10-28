@@ -1,0 +1,20 @@
+[background]
+path = "/usr/share/wallpapers/cachyos-wallpapers/Cachy_Topography.jpg"
+fit = "Cover"
+
+[GTK]
+application_prefer_dark_theme = true
+
+[commands]
+reboot = [ "systemctl", "reboot" ]
+poweroff = [ "systemctl", "poweroff" ]
+
+[appearance]
+greeting_msg = "Bienvenido"
+
+[widget.clock]
+format = "<span font='bold 48'>%H:%M</span>\n<span font='14'>%A, %d de %B</span>"
+resolution = "500ms"
+timezone = "America/Matamoros"
+locale = "es_MX"
+label_width = 450

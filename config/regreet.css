@@ -1,0 +1,50 @@
+picture {
+    filter: blur(12px);
+}
+
+frame,
+frame.background,
+frame > border {
+    background-color: transparent;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+button {
+    background-image: none;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: none;
+}
+
+button.suggested-action {
+    background-image: none;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+}
+
+entry {
+    background-image: none;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: none;
+    color: white;
+}
+
+.destructive-action {
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    box-shadow: none;
+}
+
+/* Reloj principal */
+.widget-clock label {
+    font-size: 5.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
