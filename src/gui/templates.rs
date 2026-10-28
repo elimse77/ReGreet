@@ -76,14 +76,6 @@ impl WidgetTemplate for Ui {
                         set_height_request: 45,
                     },
 
-                    /// Label for the sessions widget
-                    #[name = "session_label"]
-                    #[template]
-                    attach[0, 2, 1, 1] = &EntryLabel {
-                        set_label: "Session:",
-                        set_height_request: 45,
-                    },
-
                     /// Widget containing the usernames
                     #[name = "usernames_box"]
                     attach[1, 1, 1, 1] = &gtk::ComboBoxText { set_hexpand: true },
@@ -91,14 +83,6 @@ impl WidgetTemplate for Ui {
                     /// Widget where the user enters the username
                     #[name = "username_entry"]
                     attach[1, 1, 1, 1] = &gtk::Entry { set_hexpand: true },
-
-                    /// Widget containing the sessions
-                    #[name = "sessions_box"]
-                    attach[1, 2, 1, 1] = &gtk::ComboBoxText,
-
-                    /// Widget where the user enters the session
-                    #[name = "session_entry"]
-                    attach[1, 2, 1, 1] = &gtk::Entry,
 
                     /// Label for the password widget
                     #[name = "input_label"]
@@ -120,13 +104,6 @@ impl WidgetTemplate for Ui {
                     attach[2, 1, 1, 1] = &gtk::ToggleButton {
                         set_icon_name: "document-edit-symbolic",
                         set_tooltip_text: Some("Manually enter username"),
-                    },
-
-                    /// Button to toggle manual session entry
-                    #[name = "sess_toggle"]
-                    attach[2, 2, 1, 1] = &gtk::ToggleButton {
-                        set_icon_name: "document-edit-symbolic",
-                        set_tooltip_text: Some("Manually enter session command"),
                     },
 
                     /// Collection of action buttons (eg. Login)
@@ -204,22 +181,55 @@ impl WidgetTemplate for Ui {
                     }
                 },
 
-                /// Collection of buttons that close the greeter (eg. Reboot)
-                gtk::Box {
-                    set_halign: gtk::Align::Center,
-                    set_homogeneous: true,
-                    set_spacing: 15,
+            },
 
-                    /// Button to reboot
-                    #[name = "reboot_button"]
-                    #[template]
-                    EndButton { set_label: "Reboot" },
+            /// Icon buttons that close the greeter (Reboot, Power Off), bottom left
+            add_overlay = &gtk::Box {
+                set_halign: gtk::Align::Start,
+                set_valign: gtk::Align::End,
+                set_margin_bottom: 15,
+                set_margin_start: 15,
+                set_spacing: 10,
 
-                    /// Button to power-off
-                    #[name = "poweroff_button"]
-                    #[template]
-                    EndButton { set_label: "Power Off" },
+                /// Button to reboot
+                #[name = "reboot_button"]
+                #[template]
+                EndButton {
+                    set_icon_name: "system-reboot-symbolic",
+                    set_tooltip_text: Some("Reboot"),
                 },
+
+                /// Button to power-off
+                #[name = "poweroff_button"]
+                #[template]
+                EndButton {
+                    set_icon_name: "system-shutdown-symbolic",
+                    set_tooltip_text: Some("Power Off"),
+                },
+            },
+
+            /// Session selector, bottom right
+            add_overlay = &gtk::Box {
+                set_halign: gtk::Align::End,
+                set_valign: gtk::Align::End,
+                set_margin_bottom: 15,
+                set_margin_end: 15,
+                set_spacing: 10,
+
+                /// Button to toggle manual session entry
+                #[name = "sess_toggle"]
+                gtk::ToggleButton {
+                    set_icon_name: "document-edit-symbolic",
+                    set_tooltip_text: Some("Manually enter session command"),
+                },
+
+                /// Widget where the user enters the session
+                #[name = "session_entry"]
+                gtk::Entry,
+
+                /// Widget containing the sessions
+                #[name = "sessions_box"]
+                gtk::ComboBoxText,
             },
         }
     }

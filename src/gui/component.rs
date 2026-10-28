@@ -182,11 +182,6 @@ impl AsyncComponent for Greeter {
                     set_label: model.config.get_default_message(),
                 },
                 #[template_child]
-                session_label {
-                    #[track(model.updates.changed(Updates::input_mode()))]
-                    set_visible: !model.updates.is_input(),
-                },
-                #[template_child]
                 usernames_box {
                     #[track(
                         model.updates.changed(Updates::manual_user_mode())
@@ -218,21 +213,15 @@ impl AsyncComponent for Greeter {
                 },
                 #[template_child]
                 sessions_box {
-                    #[track(
-                        model.updates.changed(Updates::manual_sess_mode())
-                        || model.updates.changed(Updates::input_mode())
-                    )]
-                    set_visible: !model.updates.manual_sess_mode && !model.updates.is_input(),
+                    #[track(model.updates.changed(Updates::manual_sess_mode()))]
+                    set_visible: !model.updates.manual_sess_mode,
                     #[track(model.updates.changed(Updates::active_session_id()))]
                     set_active_id: model.updates.active_session_id.as_deref(),
                 },
                 #[template_child]
                 session_entry {
-                    #[track(
-                        model.updates.changed(Updates::manual_sess_mode())
-                        || model.updates.changed(Updates::input_mode())
-                    )]
-                    set_visible: model.updates.manual_sess_mode && !model.updates.is_input(),
+                    #[track(model.updates.changed(Updates::manual_sess_mode()))]
+                    set_visible: model.updates.manual_sess_mode,
                 },
                 #[template_child]
                 input_label {
@@ -301,8 +290,6 @@ impl AsyncComponent for Greeter {
                 },
                 #[template_child]
                 sess_toggle {
-                    #[track(model.updates.changed(Updates::input_mode()))]
-                    set_visible: !model.updates.is_input(),
                     connect_clicked => Self::Input::ToggleManualSess,
                 },
                 #[template_child]
