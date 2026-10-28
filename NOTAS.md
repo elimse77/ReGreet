@@ -13,11 +13,11 @@
   capa ?123 con símbolos y acentos, borrar, espacio y Enter (= botón Login).
   Las teclas no roban el foco: escriben en la casilla activa (o en la primera visible).
   Clases CSS para estilizar: .osk (marco) y .osk-key (teclas).
-- Pendiente: compilar y probar el teclado con regreet --demo en la PC (solo se probó la lógica
-  en un entorno virtual con GTK 4.14; no se compiló el proyecto completo).
+- Teclado compilado y probado con --demo en la PC de Daniel: funciona.
 
 ## Bitácora
 - 2026-10-28 | Claude | Layout nuevo (commit 9cdf2a6 en main).
 - 2026-10-28 | Gemini | Respaldo de configuración de la VM en config/ y prueba inicial con --demo (commit a278368).
 - 2026-10-28 | Gemini | Ajuste en config/regreet.css para transparencia de frames y validación con XDG_CONFIG_HOME=/tmp.
 - 2026-10-28 | Claude | Teclado en pantalla (keyboard.rs + botón en templates.rs). Lógica probada con 15 pruebas en pantalla virtual; falta compilar y probar en la PC.
+- 2026-10-28 | Claude | Manual AGENTS.md y punteros CLAUDE.md, GEMINI.md, QWEN.md. NO VERIFICADO que Gemini y Qwen los lean solos.
