@@ -46,8 +46,19 @@ Si tienes acceso a archivos o terminal, haz esto **tú mismo**, sin pedírselo a
    avísalo.
 5. Resume en máximo 3 líneas el estado actual y pregunta qué toca hacer. Espera la respuesta.
 
-Si **no** tienes acceso (chat web), pide a Daniel que pegue: `NOTAS.md`, `git status -sb` y
-`git --no-pager log --oneline -10`.
+Si **no** tienes terminal pero **sí puedes abrir páginas web** (chat web), lee tú mismo el
+repositorio desde GitHub, sin pedírselo a Daniel. Abre estas direcciones (rama `dev`):
+- `https://raw.githubusercontent.com/elimse77/ReGreet/dev/AGENTS.md`
+- `https://raw.githubusercontent.com/elimse77/ReGreet/dev/NOTAS.md`
+- `https://github.com/elimse77/ReGreet/commits/dev` (historial de commits)
+- `https://github.com/elimse77/ReGreet/tree/dev` (estructura de archivos)
+- Para leer cualquier archivo: `https://raw.githubusercontent.com/elimse77/ReGreet/dev/<ruta>`
+
+Limitación: GitHub solo muestra lo que Daniel ya subió con `git push`. No ve los cambios locales
+sin subir. Si sospechas que hay trabajo sin subir, pregúntaselo en una línea.
+
+Solo si **no puedes** ni ejecutar comandos ni abrir páginas web, pide a Daniel que pegue:
+`NOTAS.md`, `git status -sb` y `git --no-pager log --oneline -10`.
 
 Después:
 - Trabaja solo en la rama `dev`. Si Daniel está en otra, avísale.
@@ -143,16 +154,23 @@ aunque no cargue el repositorio, sabe qué hacer al empezar:
 ```
 Trabajas con Daniel en proyectos de Rust + GTK4 junto a otras IAs (Claude, Gemini, Qwen).
 Responde siempre en español, corto, con UNA instrucción por mensaje, y espera mi confirmación.
-Al empezar cada sesión, antes de cualquier cosa: lee AGENTS.md y NOTAS.md del repositorio,
-revisa git status -sb y git log --oneline -10, resume el estado en 3 líneas y pregunta qué
-toca. Si no tienes acceso al repositorio, pídeme que pegue esos datos. Nunca inventes ni
-afirmes pruebas que no hiciste. Nada destructivo sin mi permiso. Solo yo hago git push.
-Antes de terminar, actualiza NOTAS.md.
+Al empezar cada sesión, antes de cualquier cosa, lee el repositorio TÚ MISMO, sin pedirme que
+pegue nada: si tienes terminal, usa git; si solo tienes navegador, abre en GitHub (rama dev)
+AGENTS.md, NOTAS.md y el historial de commits en github.com/elimse77/<proyecto>
+(archivos en raw.githubusercontent.com/elimse77/<proyecto>/dev/<ruta>). Resume el estado en
+3 líneas y pregunta qué toca. Solo si no puedes ni ejecutar comandos ni abrir páginas, pídeme
+los datos. Nunca inventes ni afirmes pruebas que no hiciste. Nada destructivo sin mi permiso.
+Solo yo hago git push. Antes de terminar, actualiza NOTAS.md.
 ```
 
 ## 12. Proyectos
 
 - **ReGreet** (`~/proyectos/regreet`): greeter de greetd. Código en `src/gui/`. Respaldos de la
   configuración del sistema en `config/`. Teclado en pantalla en `src/gui/widget/keyboard.rs`.
+  GitHub: `https://github.com/elimse77/ReGreet` (rama `dev`).
 - **VibePanel** (`~/proyectos/vibepanel`): panel de Wayland. Mucho de lo visual se cambia solo
-  con `config.toml`, sin recompilar. Pendiente de hacer el fork.
+  con `config.toml`, sin recompilar. Pendiente de hacer el fork; cuando exista, su GitHub será
+  `https://github.com/elimse77/vibepanel`.
+
+Regla para Daniel: haz `git push` de `dev` al cerrar cada sesión de trabajo. Si no, las IAs que
+leen por GitHub no verán tus últimos cambios.
